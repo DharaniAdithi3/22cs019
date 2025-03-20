@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Top Users</title>
+    </head>
+    <body>
+        <h2>Top Users</h1>
+        <div class="result"></div>
+        <script>
+            let a = [{
+                name: "rohan",
+                number: 15
+            }, {
+                name: "karthick",
+                number: 18
+            }, {
+                name: "anu",
+                number: 25
+            }, {
+                name: "abii",
+                number: 5
+            }, {
+                name: "maran",
+                number: 6
+            }];
+
+            // Sorting and slicing to get the top 3 users
+            const topArray = [...a].sort((a, b) => b.number - a.number).slice(0, 3);
+
+            // Prepare the HTML for the top 3 users
+            let li = '';
+            for (let i = 0; i < topArray.length; i++) {
+                const { name, number } = topArray[i];
+                let html = `<h3>${name}</h3>
+                            <p>Number: ${number} ⭐</p>`;
+                li += html;
+            }
+
+            // Displaying the result in the div with class 'result'
+            document.querySelector('.result').innerHTML = li;
+        </script>
+    </body>
+</html>
