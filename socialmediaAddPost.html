@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Newest Post</title>
+</head>
+<body>
+    <div class="newest-post"></div>
+
+    <script>
+        // Sample data for posts, with a timestamp for when the post was created
+        let posts = [
+            { text: "Hello World!", date: "2025-03-18T12:00:00Z" },
+            { text: "Check out my new blog post!", date: "2025-03-19T15:00:00Z" },
+            { text: "This is my first post!", date: "2025-03-20T09:00:00Z" },
+            { text: "Just learning JavaScript!", date: "2025-03-17T18:00:00Z" }
+        ];
+
+        // Sorting posts by the 'date' property in descending order (newest first)
+        const newestPost = [...posts]
+            .sort((a, b) => new Date(b.date) - new Date(a.date))[0]; // Get the first post after sorting
+
+        // Preparing HTML to display the newest post
+        let postHtml = `<h3>Newest Post</h3>
+                        <p>${newestPost.text}</p>
+                        <p>Date: ${new Date(newestPost.date).toLocaleString()}</p>`;
+
+        // Display the newest post inside the 'newest-post' div
+        document.querySelector('.newest-post').innerHTML = postHtml;
+    </script>
+</body>
+</html>
