@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Top Comments</title>
+</head>
+<body>
+    <div class="comments"></div>
+
+    <script>
+        // Sample data for comments
+        let comments = [
+            { text: "This is amazing!", likes: 100 },
+            { text: "Great job, keep it up!", likes: 250 },
+            { text: "Nice work!", likes: 150 },
+            { text: "Awesome!", likes: 50 },
+            { text: "Very informative!", likes: 200 }
+        ];
+
+        // Sorting comments based on 'likes' in descending order and getting the top 3
+        const topComments = [...comments]
+            .sort((a, b) => b.likes - a.likes)
+            .slice(0, 3);
+
+        // Preparing HTML to display the top 3 comments
+        let commentHtml = '';
+        for (let i = 0; i < topComments.length; i++) {
+            const { text, likes } = topComments[i];
+            let html = `<h3>Comment ${i + 1}</h3>
+                        <p>${text}</p>
+                        <p>Likes: ${likes} 👍</p>`;
+            commentHtml += html;
+        }
+
+        // Display the top 3 comments inside the 'comments' div
+        document.querySelector('.comments').innerHTML = commentHtml;
+    </script>
+</body>
+</html>
